@@ -1,6 +1,5 @@
 {% set version = '1.0-1' %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-twdtw
@@ -13,7 +12,6 @@ source:
   sha256: ced3131a1d66db08e242286eeac0b0a36e9e70fda92377010cbe17e7054920f1
 
 build:
-  merge_build_host: True  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -47,8 +45,6 @@ requirements:
     - r-base
     - r-rcpp
     - r-proxy
-    ## NB: win gcc-libgfortran dep likely needs manual removal in UCRT migration
-    - {{ native }}gcc-libgfortran  # [win]
 
 test:
   commands:
